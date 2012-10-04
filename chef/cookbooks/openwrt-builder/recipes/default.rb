@@ -23,36 +23,14 @@
   end
 end
 
-dir = "/mnt/openwrt"
+dir = "/mnt/openwrt/trunk/staging_dir"
 directory dir do
-  owner "vagrant"
-  group "vagrant"
+  owner "root"
+  group "root"
   mode "0755"
   action :create
 end
-
-%w{ repo }.each do |repo|
-  exec "clone" do
-    command "git clone http://git.mirror.nanl.de/openwrt/#{repo}.git"
-    action :run
-    user "vagrant"
-    group "vagrant"
-    cwd dir
-    creates "#{dir}/#{repo}"
-  end
-end
-
-%w{ trunk/staging_dir }.each do |sdir|
-   directory "#{dir}/#{sdir}" do
-      mode "0775"
-      owner "vagrant"
-      group "vagrant"
-      action :create
-      recursive true
-   end
-end
-
-mount "#{dir}/trunk/staging_dir" do
+mount dir do
   pass 0
   device "/dev/null"
   fstype "tmpfs"
