@@ -12,4 +12,4 @@ Setup an [OpenWRT Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigenc
 * You may need to run `vagrant reload` to ensure VirtualBox guest additions are setup.
 * `vagrant ssh` to login
 * Code is in `/mnt/openwrt` on the guest and `build/` on the host.
-* Follow (buildroot compilation directions)[http://wiki.openwrt.org/doc/howto/buildroot.exigence]
+* Follow [buildroot compilation directions](http://wiki.openwrt.org/doc/howto/buildroot.exigence) from step 3
