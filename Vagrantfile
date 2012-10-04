@@ -8,10 +8,17 @@ Vagrant::Config.run do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "openwrt-builder"
+  config.vm.host_name = "openwrt-builder"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://puppetlabs.s3.amazonaws.com/pub/squeeze64.box"
+
+  config.vm.customize ["modifyvm", :id, "--memory", "2048"]
+  if not (RUBY_PLATFORM.downcase.include?("mswin") or RUBY_PLATFORM.downcase.include?("mingw") )
+    config.vm.customize ["modifyvm", :id, "--cpus",
+      `awk "/^processor/ {++n} END {print n}" /proc/cpuinfo 2> /dev/null || sh -c 'sysctl hw.logicalcpu 2> /dev/null || echo ": 2"' | awk \'{print \$2}\' `.chomp ]
+  end
 
   # Boot with a GUI so you can see the screen. (Default is headless)
   # config.vm.boot_mode = :gui
@@ -34,7 +41,7 @@ Vagrant::Config.run do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding 
   # some recipes and/or roles.
   #
-  config.vm.provision :shell, :inline => "apt-get -y install rubygems && gem install chef"
+  config.vm.provision :shell, :inline => "chef-solo --help 2>/dev/null 1>/dev/null || (apt-get -y install rubygems && gem install chef)"
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "./chef/cookbooks"
     chef.roles_path = "./chef/roles"

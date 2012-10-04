@@ -17,8 +17,23 @@
 # limitations under the License.
 
 # runtime deps
-%w{ git build-essential subversion }.each do |pkg|
+%w{ git build-essential subversion libncurses5-dev zlib1g-dev gawk flex libssl-dev unzip }.each do |pkg|
   package pkg do
     action :install
   end
+end
+
+dir = "/mnt/openwrt/trunk/staging_dir"
+directory dir do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+end
+mount dir do
+  pass 0
+  device "/dev/null"
+  fstype "tmpfs"
+  options "rw,nosuid,nodev,mode=777,size=1024m"
+  action [:mount, :enable]
 end
