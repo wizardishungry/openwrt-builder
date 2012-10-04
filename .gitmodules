@@ -1,6 +1,6 @@
 [submodule "build/packages"]
 	path = build/packages
 	url = http://git.mirror.nanl.de/openwrt/packages.git
-[submodule "build/openwrt"]
-	path = build/openwrt
+[submodule "build/trunk"]
+	path = build/trunk
 	url = http://git.mirror.nanl.de/openwrt/trunk.git
