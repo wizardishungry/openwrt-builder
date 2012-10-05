@@ -32,8 +32,7 @@ directory dir do
 end
 
 %w{ trunk packages }.each do |repo|
-  exec "clone" do
-    command "git clone http://git.mirror.nanl.de/openwrt/#{repo}.git"
+  exec "git clone http://git.mirror.nanl.de/openwrt/#{repo}.git" do
     action :run
     user "vagrant"
     group "vagrant"
