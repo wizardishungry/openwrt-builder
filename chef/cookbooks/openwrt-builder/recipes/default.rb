@@ -31,7 +31,7 @@ directory dir do
   action :create
 end
 
-%w{ repo }.each do |repo|
+%w{ trunk packages }.each do |repo|
   exec "clone" do
     command "git clone http://git.mirror.nanl.de/openwrt/#{repo}.git"
     action :run
