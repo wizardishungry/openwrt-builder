@@ -35,8 +35,8 @@ Vagrant::Config.run do |config|
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  config.vm.share_folder "build", "/mnt/openwrt", "./build"
-  config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/build", "1"] # See https://www.virtualbox.org/ticket/10085
+  #config.vm.share_folder "build", "/mnt/openwrt", "./build"
+  #config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/build", "1"] # See https://www.virtualbox.org/ticket/10085
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding 

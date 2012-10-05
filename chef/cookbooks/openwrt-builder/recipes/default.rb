@@ -42,20 +42,24 @@ end
   end
 end
 
-%w{ trunk/staging_dir }.each do |sdir|
-   directory "#{dir}/#{sdir}" do
-      mode "0775"
-      owner "vagrant"
-      group "vagrant"
-      action :create
-      recursive true
-   end
-end
+#%w{ trunk/staging_dir }.each do |sdir|
+#   directory "#{dir}/#{sdir}" do
+#      mode "0775"
+#      owner "vagrant"
+#      group "vagrant"
+#      action :create
+#      recursive true
+#   end
+#end
 
-mount "#{dir}/trunk/staging_dir" do
-  pass 0
-  device "/dev/null"
-  fstype "tmpfs"
-  options "rw,nosuid,nodev,mode=777,size=1024m"
-  action [:mount, :enable]
+#mount "#{dir}/trunk/staging_dir" do
+#  pass 0
+#  device "/dev/null"
+#  fstype "tmpfs"
+#  options "rw,nosuid,nodev,mode=777,size=1024m"
+#  action [:mount, :enable]
+#end
+
+link "/home/vagrant/openwrt" do
+  to dir
 end
