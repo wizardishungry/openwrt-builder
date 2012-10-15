@@ -33,7 +33,6 @@ Vagrant::Config.run do |config|
     config.vm.box = "openwrt-guest-#{File.stat(image_name).ctime.to_i}"
     config.vm.host_name = "openwrt-guest"
     config.vm.box_url = "#{path}/#{image_name}"
-    puts config.vm.box_url
     config.vm.network :hostonly, "#{addr_prefix}.11"
     config.vm.boot_mode = :gui
   end
