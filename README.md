@@ -1,6 +1,6 @@
 # OpenWrt Builder
 
-Setup an [OpenWrt Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigence) enviornment in a VirtualBox environment, build OpenWrt, boot to OpenWrt in VirtualBox.
+Setup an [OpenWrt](http://www.openwrt.org/] [Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigence) environment inside VirtualBox, build OpenWrt, boot to OpenWrt in VirtualBox.
 <img src="http://i.imgur.com/HL4qt.png">
 
 ## Install
@@ -24,3 +24,4 @@ Setup an [OpenWrt Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigenc
 * Use Veewee
 * Provisioning for OpenWrt packages…
 * and My Secret Project<sup>®</sup>
+* Multiple network interfaces
