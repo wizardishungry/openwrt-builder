@@ -14,7 +14,7 @@ Vagrant::Config.run do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://puppetlabs.s3.amazonaws.com/pub/squeeze64.box"
 
-  config.vm.customize ["modifyvm", :id, "--memory", "2048"]
+  #config.vm.customize ["modifyvm", :id, "--memory", "1024"]
   if not (RUBY_PLATFORM.downcase.include?("mswin") or RUBY_PLATFORM.downcase.include?("mingw") )
     config.vm.customize ["modifyvm", :id, "--cpus",
       `awk "/^processor/ {++n} END {print n}" /proc/cpuinfo 2> /dev/null || sh -c 'sysctl hw.logicalcpu 2> /dev/null || echo ": 2"' | awk \'{print \$2}\' `.chomp ]
@@ -35,7 +35,7 @@ Vagrant::Config.run do |config|
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  #config.vm.share_folder "build", "/mnt/openwrt", "./build"
+  config.vm.share_folder "images", "/mnt/images", "./bin"
   #config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/build", "1"] # See https://www.virtualbox.org/ticket/10085
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles

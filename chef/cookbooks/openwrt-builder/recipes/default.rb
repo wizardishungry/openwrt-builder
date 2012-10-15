@@ -31,12 +31,20 @@ directory dir do
   action :create
 end
 
+link "/home/vagrant/openwrt" do
+  to dir
+end
+
 execute "git clone http://git.mirror.nanl.de/openwrt/trunk.git ." do
   action :run
   user "vagrant"
   group "vagrant"
   cwd dir
   creates "#{dir}/.git"
+end
+
+link "#{dir}/bin" do
+  to "/mnt/images"
 end
 
 execute "./scripts/feeds update -a" do
@@ -67,8 +75,4 @@ execute "make -j `awk \"/^processor/ {++n} END {print n}\" /proc/cpuinfo `" do
   user "vagrant"
   group "vagrant"
   cwd "#{dir}"
-end
-
-link "/home/vagrant/openwrt" do
-  to dir
 end
