@@ -11,5 +11,6 @@ Setup an [OpenWRT Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigenc
 * Run `vagrant up`
 * You may need to run `vagrant reload` to ensure VirtualBox guest additions are setup.
 * `vagrant ssh` to login
+* Right now we're building a VM but not doing anything with it. Building is slow; we should make this use rake, etc.
 * Code is in `/mnt/openwrt` on the guest. We're not mounting from host to guest because hard links on virtualbox filesystems don't work on all platforms.
 * Follow [buildroot compilation directions](http://wiki.openwrt.org/doc/howto/buildroot.exigence) from step 3
