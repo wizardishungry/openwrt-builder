@@ -62,7 +62,7 @@ template "#{dir}/.config" do
   })
 end
 
-execute "make " do # todo add a -j option?
+execute "make -j `awk \"/^processor/ {++n} END {print n}\" /proc/cpuinfo `" do
   action :run
   user "vagrant"
   group "vagrant"
