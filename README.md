@@ -7,6 +7,7 @@ Setup an [OpenWRT Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigenc
 * Install [VirtualBox](https://www.virtualbox.org)
 * Install [Vagrant](http://vagrantup.com/)
 * (Optionally) install [vagrant-vbguest](https://github.com/dotless-de/vagrant-vbguest)
+* Install [Veewee](https://github.com/jedi4ever/veewee)
 * Check out the repository.
 * Run `vagrant up`
 * You may need to run `vagrant reload` to ensure VirtualBox guest additions are setup.
