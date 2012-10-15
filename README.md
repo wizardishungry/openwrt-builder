@@ -22,5 +22,5 @@ Setup an [OpenWrt Buildroot](http://wiki.openwrt.org/doc/howto/buildroot.exigenc
 
 * Combine Vagrantfile into Rakefile
 * Use Veewee
-* Provisioning for OpenWrt packages
-* and for My Secret Project<sup>Â®</sup>
+* Provisioning for OpenWrt packages…
+* and My Secret Project<sup>®</sup>
