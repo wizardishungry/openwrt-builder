@@ -31,33 +31,43 @@ directory dir do
   action :create
 end
 
-%w{ trunk packages }.each do |repo|
-  execute "git clone http://git.mirror.nanl.de/openwrt/#{repo}.git" do
-    action :run
-    user "vagrant"
-    group "vagrant"
-    cwd dir
-    creates "#{dir}/#{repo}"
-  end
+execute "git clone http://git.mirror.nanl.de/openwrt/trunk.git ." do
+  action :run
+  user "vagrant"
+  group "vagrant"
+  cwd dir
+  creates "#{dir}/.git"
 end
 
-#%w{ trunk/staging_dir }.each do |sdir|
-#   directory "#{dir}/#{sdir}" do
-#      mode "0775"
-#      owner "vagrant"
-#      group "vagrant"
-#      action :create
-#      recursive true
-#   end
-#end
+execute "./scripts/feeds update -a" do
+  action :run
+  user "vagrant"
+  group "vagrant"
+  cwd "#{dir}"
+end
 
-#mount "#{dir}/trunk/staging_dir" do
-#  pass 0
-#  device "/dev/null"
-#  fstype "tmpfs"
-#  options "rw,nosuid,nodev,mode=777,size=1024m"
-#  action [:mount, :enable]
-#end
+execute "make defconfig && make prereq" do
+  action :run
+  user "vagrant"
+  group "vagrant"
+  cwd "#{dir}"
+end
+
+template "#{dir}/.config" do
+  source "openwrt.config.erb"
+  mode 0660
+  owner "vagrant"
+  group "vagrant"
+  variables({
+  })
+end
+
+execute "make " do # todo add a -j option?
+  action :run
+  user "vagrant"
+  group "vagrant"
+  cwd "#{dir}"
+end
 
 link "/home/vagrant/openwrt" do
   to dir
