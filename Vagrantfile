@@ -29,13 +29,13 @@ Vagrant::Config.run do |config|
     end
   end
 
-  config.vm.define :openwrt do |config|
-    config.vm.box = "openwrt-guest-#{File.stat(image_name).ctime.to_i}"
-    config.vm.host_name = "openwrt-guest"
-    config.vm.box_url = "#{path}/#{image_name}"
-    config.vm.network :hostonly, "#{addr_prefix}.11"
-    config.vm.boot_mode = :gui
-  end
+#  config.vm.define :openwrt do |config|
+#    config.vm.box = "openwrt-guest-#{File.stat(image_name).ctime.to_i}"
+#    config.vm.host_name = "openwrt-guest"
+#    config.vm.box_url = "#{path}/#{image_name}"
+#    config.vm.network :hostonly, "#{addr_prefix}.11"
+#    config.vm.boot_mode = :gui
+#  end
 
   # Install VBGuest plugin
   # vagrant gem install vagrant-vbguest
