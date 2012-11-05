@@ -19,11 +19,11 @@ Setup an [OpenWrt](http://www.openwrt.org/] [Buildroot](http://wiki.openwrt.org/
 * Run `rake` to setup a VirtualBox image for the OpenWrt build.
 * Launch the VM from VirtualBox manager or run `rake vbox_launch`.
 * *[from wiki](http://wiki.openwrt.org/doc/howto/virtualbox#set.up.networking.with.clients)* Boot up OpenWrt and add to /etc/config/network
-```
+<code>
 config 'interface' 'wan'
         option 'proto' 'dhcp'
         option 'ifname' 'eth1'
-```
+</code>
 * Start the wan with `ifup wan`
 * DNS resolution should work: `nslookup cnn.com 127.0.0.1`
 
