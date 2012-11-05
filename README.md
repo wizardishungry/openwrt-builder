@@ -18,6 +18,13 @@ Setup an [OpenWrt](http://www.openwrt.org/] [Buildroot](http://wiki.openwrt.org/
 * Code is in `/mnt/openwrt` on the guest. We're not mounting from host to guest because hard links on virtualbox filesystems don't work on all platforms.
 * Run `rake` to setup a VirtualBox image for the OpenWrt build.
 * Launch the VM from VirtualBox manager or run `rake vbox_launch`.
+* *[from wiki](http://wiki.openwrt.org/doc/howto/virtualbox#set.up.networking.with.clients) Boot up OpenWrt and add to /etc/config/network `
+config 'interface' 'wan'
+        option 'proto' 'dhcp'
+        option 'ifname' 'eth1'
+`
+* Start the wan with `ifup wan`
+* DNS resolution should work: `nslookup cnn.com 127.0.0.1`
 
 ## Todo
 
@@ -25,4 +32,3 @@ Setup an [OpenWrt](http://www.openwrt.org/] [Buildroot](http://wiki.openwrt.org/
 * Use Veewee
 * Provisioning for OpenWrt packages…
 * and My Secret Project<sup>®</sup>
-* Multiple network interfaces
