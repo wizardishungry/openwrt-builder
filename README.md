@@ -12,7 +12,7 @@ Setup an [OpenWrt](http://www.openwrt.org/] [Buildroot](http://wiki.openwrt.org/
 * Check out the repository.
 * Run `vagrant up`
 * You may need to run `vagrant reload` to ensure VirtualBox guest additions are setup.
-* The Chefg provisioner will setup all the build prerequisites and build a VM image. This is slow!
+* The Chef provisioner will setup all the build prerequisites and build a VM image. This is slow!
 * Once the Chef provisioner completes, you'll have an x86 VirtualBox image in `bin/x86`
 * `vagrant ssh` to login
 * Code is in `/mnt/openwrt` on the guest. We're not mounting from host to guest because hard links on virtualbox filesystems don't work on all platforms.
